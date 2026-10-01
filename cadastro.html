@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="fundo-obra"></div>
+
+    <div class="card-cadastro">
+      <h2>Novo Cadastro</h2>
+      <p>Crie a conta para um novo usuário</p>
+
+      <form id="formulario-cadastro">
+        <div class="grupo-input">
+          <label for="cadastro-cpf">Novo Cadastro (CPF)</label>
+          <input
+            type="text"
+            id="cadastro-cpf"
+            placeholder="Digite o CPF"
+            maxlength="14"
+            required
+          />
+        </div>
+
+        <div class="grupo-input">
+          <label for="cadastro-senha">Cadastrar Senha</label>
+          <input
+            type="password"
+            id="cadastro-senha"
+            placeholder="Cadastre a senha"
+            required
+          />
+        </div>
+
+        <div class="grupo-input">
+          <label for="token-mestre">Token Mestre</label>
+          <input
+            type="password"
+            id="token-mestre"
+            placeholder="Digite o Token Mestre"
+            required
+          />
+        </div>
+
+        <button type="submit" id="btn-cadastro">Cadastrar Usuário</button>
+
+        <p id="mensagem-erro"></p>
+      </form>
+
+      <div class="container-voltar">
+        <a href="index.html" id="link-voltar">Voltar para o Login</a>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

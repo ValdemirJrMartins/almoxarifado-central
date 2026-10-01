@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Almoxarifado Central - Login</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="fundo-obra"></div>
+
+    <div class="card-login">
+      <h2>Almoxarifado Central</h2>
+      <p>Gestão Inteligente de Suprimentos</p>
+
+      <form id="formulario-login">
+        <div class="grupo-input">
+          <label for="campo-cpf">🔑 Cadastro (CPF)</label>
+          <input
+            type="text"
+            id="campo-cpf"
+            placeholder="Digite o CPF"
+            maxlength="14"
+            required
+          />
+        </div>
+
+        <div class="grupo-input">
+          <label for="campo-senha">🔒 Senha de Acesso</label>
+          <input
+            type="password"
+            id="campo-senha"
+            placeholder="Digite a Senha"
+            required
+          />
+        </div>
+
+        <button type="submit" id="btn-entrar">Entrar</button>
+
+        <p id="mensagem-erro"></p>
+      </form>
+
+      <div class="container-cadastro">
+        <p>
+          Novo por aqui?
+          <a href="cadastro.html" id="link-cadastro">Criar nova conta</a>
+        </p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
