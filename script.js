@@ -31,7 +31,7 @@ if (formLogin) {
       document.getElementById("mensagem-erro").innerText =
         "Usuário não cadastrado!";
     } else if (senhaLogin === senhaSalva) {
-      alert("Login efetuado com sucesso! Bem-vindo ao Almoxarifado.");
+      window.location.href = "estoque.html";
     } else {
       document.getElementById("mensagem-erro").innerText = "Senha incorreta!";
     }
