@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "segoe ui", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-image: url("../assets/fundo.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container-estoque {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 30px;
+  width: 100%;
+  max-width: 900px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  color: #ffffff;
+}
+
+.header-estoque {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.header-estoque h2 {
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.btn-sair {
+  background-color: rgba(220, 53, 69, 0.2);
+  border: 1px solid rgba(220, 53, 69, 0.4);
+  color: #ff9999;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.btn-sair:hover {
+  background-color: rgba(220, 53, 69, 0.5);
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(220, 53, 69, 0.3);
+  transform: translateY(-2px);
+}
+
+.form-secao h3 {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+.form-linha {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-end;
+}
+
+.grupo-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.grupo-input label {
+  font-size: 0.85rem;
+  color: #ffffff;
+}
+
+.grupo-input input {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 12px;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+.grupo-input input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.3);
+  border-color: #2ecc71;
+  box-shadow: 0 0 8px rgba(46, 204, 113, 0.5);
+}
+
+.grupo-input input::placeholder {
+  color: #dddddd;
+}
+
+.btn-add {
+  background: rgba(40, 167, 69, 0.2);
+  border: 1px solid rgba(40, 167, 69, 0.4);
+  color: #99ffaa;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: 0.3s ease;
+  height: 48px;
+}
+
+.btn-add:hover {
+  background: rgba(40, 167, 69, 0.6);
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(40, 167, 69, 0.3);
+}

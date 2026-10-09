@@ -72,3 +72,36 @@ if (formCadastro) {
   const campoToken = document.getElementById("token-mestre");
   campoToken.addEventListener("input", limparMensagemErro);
 }
+
+const botaoSair = document.getElementById("botao-sair");
+if (botaoSair) {
+  botaoSair.addEventListener("click", function () {
+    alert("Sessão encerrada com segurança. Voltando para a página de login.");
+    window.location.href = "index.html";
+  });
+}
+
+let listaMateriais = JSON.parse(localStorage.getItem("bancoEstoque")) || [];
+
+function salvarNoEstoque() {
+  localStorage.setItem("bancoEstoque", JSON.stringify(listaMateriais));
+}
+
+const formEstoque = document.getElementById("formulario-estoque");
+
+if (formEstoque) {
+  formEstoque.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+    const nomeMaterial = document.getElementById("nome-material").value;
+    const qtdMaterial = document.getElementById("qtd-material").value;
+
+    const novaFicha = {
+      nome: nomeMaterial,
+      quantidade: qtdMaterial,
+    };
+    listaMateriais.push(novaFicha);
+    salvarNoEstoque();
+    alert("Material salvo com sucesso no estoque!");
+    formEstoque.reset();
+  });
+}
