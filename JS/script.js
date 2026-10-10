@@ -87,6 +87,27 @@ function salvarNoEstoque() {
   localStorage.setItem("bancoEstoque", JSON.stringify(listaMateriais));
 }
 
+function carregarDoEstoque() {
+  const corpoTabela = document.getElementById("lista-estoque");
+  if (!corpoTabela) return;
+  corpoTabela.innerHTML = "";
+  listaMateriais.forEach(function (material, index) {
+    const linha = `
+      <tr>
+        <td>${material.nome}</td>
+        <td>${material.quantidade}</td>
+        <td>
+          <button class="btn-diminuir" onclick="diminuirItem(${index})">- Diminuir</button>
+          <button class="btn-apagar" onclick="apagarItem(${index})">Apagar</button>
+        </td>
+      </tr>
+    `;
+    corpoTabela.innerHTML += linha;
+  });
+}
+
+carregarDoEstoque();
+
 const formEstoque = document.getElementById("formulario-estoque");
 
 if (formEstoque) {
@@ -101,7 +122,22 @@ if (formEstoque) {
     };
     listaMateriais.push(novaFicha);
     salvarNoEstoque();
+    carregarDoEstoque();
     alert("Material salvo com sucesso no estoque!");
     formEstoque.reset();
   });
+}
+
+function apagarItem(index) {
+  listaMateriais.splice(index, 1);
+  salvarNoEstoque();
+  carregarDoEstoque();
+}
+
+function diminuirItem(index) {
+  if (listaMateriais[index].quantidade > 0) {
+    listaMateriais[index].quantidade--;
+    salvarNoEstoque();
+    carregarDoEstoque();
+  }
 }
