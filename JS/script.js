@@ -97,8 +97,16 @@ function carregarDoEstoque() {
         <td>${material.nome}</td>
         <td>${material.quantidade}</td>
         <td>
-          <button class="btn-diminuir" onclick="diminuirItem(${index})">- Diminuir</button>
-          <button class="btn-apagar" onclick="apagarItem(${index})">Apagar</button>
+          <div class="menu-container">
+            <button class="btn-sanduiche" onclick="alternarMenu(${index})">&#9776;</button>
+            <div id="dropdown-${index}" class="dropdown-menu">
+            <button class="btn-acao btn-adicionar" onclick="adicionarTotal(${index})">Adicionar</button>
+            <button class="btn-acao btn-subtrair" onclick="subtrairTotal(${index})">Subtrair</button>
+            <button class="btn-acao btn-baixa" onclick="darBaixaItem(${index})">Baixa</button>
+            <button class="btn-acao btn-devolver" onclick="devolverItem(${index})">Devolver</button> 
+            <button class="btn-acao btn-apagar" onclick="apagarItem(${index})">Apagar</button>
+            </div>
+          </div>
         </td>
       </tr>
     `;
@@ -139,5 +147,12 @@ function diminuirItem(index) {
     listaMateriais[index].quantidade--;
     salvarNoEstoque();
     carregarDoEstoque();
+  }
+}
+
+function alternarMenu(index) {
+  const menu = document.getElementById(`dropdown-${index}`);
+  if (menu) {
+    menu.classList.toggle("ativo");
   }
 }

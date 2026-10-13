@@ -152,6 +152,7 @@ body {
   letter-spacing: 0.5px;
   color: #dddddd;
   border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+  text-align: center;
 }
 
 .tabela-estoque td {
@@ -159,6 +160,7 @@ body {
   font-size: 0.95rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.8);
   color: #ffffff;
+  text-align: center;
 }
 
 .tabela-estoque tbody tr {
@@ -179,6 +181,7 @@ body {
   font-size: 0.85rem;
   font-weight: 500;
   margin-right: 8px;
+  margin-bottom: 10px;
   transition: 0.3s ease;
 }
 
@@ -205,4 +208,126 @@ body {
   color: #ffffff;
   box-shadow: 0 0 10px rgba(220, 53, 69, 0.3);
   transform: translateY(-1px);
+}
+
+.menu-container {
+  position: relative;
+  display: inline-block;
+}
+
+.btn-sanduiche {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 6px 12px;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-sanduiche:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 110%;
+  background: rgba(20, 20, 20, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  z-index: 100;
+  min-width: 140px;
+}
+
+.dropdown-menu.ativo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.btn-acao {
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  background: transparent;
+  transition: 0.2s ease;
+}
+
+.btn-acao:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 600px) {
+  .header-estoque {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .form-linha {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .grupo-input,
+  .btn-add {
+    width: 100% !important;
+  }
+
+  .btn-add {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .tabela-secao {
+    margin-top: 25px;
+    display: block;
+    width: 100%;
+  }
+
+  .tabela-estoque {
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  .tabela-estoque th,
+  .tabela-estoque td {
+    padding: 10px 8px;
+    font-size: 0.8rem;
+    white-space: normal;
+  }
+
+  .tabela-estoque th:nth-child(1),
+  .tabela-estoque td:nth-child(1) {
+    width: 38%;
+    text-align: center;
+  }
+
+  .tabela-estoque th:nth-child(2),
+  .tabela-estoque td:nth-child(2) {
+    width: 40%;
+    text-align: center;
+  }
+
+  .tabela-estoque th:nth-child(3),
+  .tabela-estoque td:nth-child(3) {
+    width: 22%;
+    text-align: center;
+  }
+
+  .btn-sanduiche {
+    font-size: 0.7rem;
+  }
 }
