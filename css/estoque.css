@@ -25,6 +25,8 @@ body {
   border-radius: 16px;
   padding: 30px;
   width: 100%;
+  height: auto;
+  min-height: calc(100vh - 40px);
   max-width: 900px;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   color: #ffffff;

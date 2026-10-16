@@ -31,6 +31,7 @@ if (formLogin) {
       document.getElementById("mensagem-erro").innerText =
         "Usuário não cadastrado!";
     } else if (senhaLogin === senhaSalva) {
+      localStorage.setItem("usuarioLogado", cpfLogin);
       window.location.href = "estoque.html";
     } else {
       document.getElementById("mensagem-erro").innerText = "Senha incorreta!";
@@ -81,10 +82,14 @@ if (botaoSair) {
   });
 }
 
-let listaMateriais = JSON.parse(localStorage.getItem("bancoEstoque")) || [];
+const cpfLogado = localStorage.getItem("usuarioLogado") || "geral";
+0;
+const nomeDoBancoDestaPessoa = `bancoEstoque_${cpfLogado}`;
+let listaMateriais =
+  JSON.parse(localStorage.getItem(nomeDoBancoDestaPessoa)) || [];
 
 function salvarNoEstoque() {
-  localStorage.setItem("bancoEstoque", JSON.stringify(listaMateriais));
+  localStorage.setItem(nomeDoBancoDestaPessoa, JSON.stringify(listaMateriais));
 }
 
 function carregarDoEstoque() {
@@ -153,6 +158,15 @@ function diminuirItem(index) {
 function alternarMenu(index) {
   const menu = document.getElementById(`dropdown-${index}`);
   if (menu) {
+    const botaoClicado = event.currentTarget || document.activeElement;
+    const posicaoBotao = botaoClicado.getBoundingClientRect();
+    if (window.innerHeight - posicaoBotao.bottom < 200) {
+      menu.style.top = "auto";
+      menu.style.bottom = "110%";
+    } else {
+      menu.style.bottom = "auto";
+      menu.style.top = "110%";
+    }
     menu.classList.toggle("ativo");
   }
 }
