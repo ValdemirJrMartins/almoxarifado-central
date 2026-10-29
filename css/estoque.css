@@ -137,7 +137,6 @@ body {
 .tabela-secao {
   margin-top: 35px;
   width: 100%;
-  overflow-x: auto;
 }
 
 .tabela-estoque {
@@ -160,7 +159,7 @@ body {
 .tabela-estoque td {
   padding: 14px;
   font-size: 0.95rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   color: #ffffff;
   text-align: center;
 }
