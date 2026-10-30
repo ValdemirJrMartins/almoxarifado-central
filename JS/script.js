@@ -83,7 +83,6 @@ if (botaoSair) {
 }
 
 const cpfLogado = localStorage.getItem("usuarioLogado") || "geral";
-0;
 const nomeDoBancoDestaPessoa = `bancoEstoque_${cpfLogado}`;
 let listaMateriais =
   JSON.parse(localStorage.getItem(nomeDoBancoDestaPessoa)) || [];
@@ -100,7 +99,7 @@ function carregarDoEstoque() {
     const linha = `
       <tr>
         <td>${material.nome}</td>
-        <td>${material.quantidade}</td>
+        <td>${material.quantidadeTotal} / ${material.quantidadeAlmoxarifado}</td>
         <td>
           <div class="menu-container">
             <button class="btn-sanduiche" onclick="alternarMenu(${index})">&#9776;</button>
@@ -131,7 +130,8 @@ if (formEstoque) {
 
     const novaFicha = {
       nome: nomeMaterial,
-      quantidade: qtdMaterial,
+      quantidadeTotal: Number(qtdMaterial),
+      quantidadeAlmoxarifado: Number(qtdMaterial),
     };
     listaMateriais.push(novaFicha);
     salvarNoEstoque();
@@ -139,20 +139,6 @@ if (formEstoque) {
     alert("Material salvo com sucesso no estoque!");
     formEstoque.reset();
   });
-}
-
-function apagarItem(index) {
-  listaMateriais.splice(index, 1);
-  salvarNoEstoque();
-  carregarDoEstoque();
-}
-
-function diminuirItem(index) {
-  if (listaMateriais[index].quantidade > 0) {
-    listaMateriais[index].quantidade--;
-    salvarNoEstoque();
-    carregarDoEstoque();
-  }
 }
 
 function alternarMenu(index) {
@@ -169,4 +155,57 @@ function alternarMenu(index) {
     }
     menu.classList.toggle("ativo");
   }
+}
+
+function adicionarTotal(index) {
+  listaMateriais[index].quantidadeTotal++;
+  listaMateriais[index].quantidadeAlmoxarifado++;
+  salvarNoEstoque();
+  carregarDoEstoque();
+}
+
+function subtrairTotal(index) {
+  if (listaMateriais[index].quantidadeTotal === 0) return;
+  listaMateriais[index].quantidadeTotal--;
+  if (
+    listaMateriais[index].quantidadeAlmoxarifado >
+    listaMateriais[index].quantidadeTotal
+  ) {
+    listaMateriais[index].quantidadeAlmoxarifado--;
+  }
+  salvarNoEstoque();
+  carregarDoEstoque();
+}
+
+function darBaixaItem(index) {
+  if (listaMateriais[index].quantidadeAlmoxarifado === 0) {
+    alert(
+      "Erro: Não há nenhuma unidade física deste material disponível no Almoxarifado!",
+    );
+    return;
+  }
+  listaMateriais[index].quantidadeAlmoxarifado--;
+  salvarNoEstoque();
+  carregarDoEstoque();
+}
+
+function devolverItem(index) {
+  if (
+    listaMateriais[index].quantidadeAlmoxarifado ===
+    listaMateriais[index].quantidadeTotal
+  ) {
+    alert(
+      "Erro: Todas as unidades deste material já estão guardadas no galpão!",
+    );
+    return;
+  }
+  listaMateriais[index].quantidadeAlmoxarifado++;
+  salvarNoEstoque();
+  carregarDoEstoque();
+}
+
+function apagarItem(index) {
+  listaMateriais.splice(index, 1);
+  salvarNoEstoque();
+  carregarDoEstoque();
 }
